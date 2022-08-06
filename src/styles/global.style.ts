@@ -13,4 +13,8 @@ export const globalStyles = globalCss({
     height: "100vh",
     scrollBehavior: "smooth",
   },
+  "img, button, a": {
+    all: "unset",
+    cursor: "pointer"
+  },
 });
