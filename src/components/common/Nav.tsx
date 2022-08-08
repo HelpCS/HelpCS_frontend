@@ -6,7 +6,7 @@ function Nav() {
     <StyledNav>
       <Link href="/">
         <a>
-          <StyledLogoName>도와줘개발</StyledLogoName>
+          <StyledLogoName>오늘의 문제</StyledLogoName>
         </a>
       </Link>
       <div>
@@ -22,22 +22,20 @@ const StyledNav = styled("nav", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "3rem 8rem",
+  padding: "1.3rem 4rem",
+  backgroundColor: "$pastelGreen",
 });
 
 const StyledLogoName = styled("h1", {
-  color: "$yellow",
   fontWeight: "$lg",
   cursor: "pointer",
+  fontSize: "1.2rem",
 });
 
 const StyledButton = styled("button", {
-  backgroundColor: "$yellow",
   color: "$white",
   fontWeight: "$md",
-  fontSize: "0.9rem",
-  borderRadius: "0.6rem",
-  padding: "0.43rem 0.63rem",
+  fontSize: "0.85rem",
   "&:hover": {
     opacity: 0.89,
     transition: "all 0.3s",
