@@ -5,9 +5,14 @@ export const { styled, getCssText } = createStitches({
     colors: {
       white: "#FFFFFF",
       black: "#000000",
+      black100: "#202123",
+      black700: "#1C1C1C",
+      red: "#D7111E",
       yellow: "#FDC453",
-      green: "#0BB3A1",
-      grey100: "#E8E8EF",
+      yellow100: "#FFF3D4",
+      green: "#008000",
+      pastelGreen: "#7BB68B",
+      grey100: "#EDEDEF",
     },
     fontWeights: {
       xs: 300,
