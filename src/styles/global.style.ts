@@ -12,9 +12,11 @@ export const globalStyles = globalCss({
     width: "100vw",
     height: "100vh",
     scrollBehavior: "smooth",
+    overflow: "hidden",
+    backgroundColor: "$white",
   },
   "img, button, a": {
     all: "unset",
-    cursor: "pointer"
+    cursor: "pointer",
   },
 });
