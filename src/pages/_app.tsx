@@ -31,6 +31,7 @@ const StyledSize = styled("section", {
   justifyContent: "center",
   alignItems: "center",
   width: "100vw",
+  minHeight: "749px",
   height: "100vh",
 });
 
