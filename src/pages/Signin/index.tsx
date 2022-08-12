@@ -17,7 +17,7 @@ function Signin() {
       <StyledSize>
         <SignInput />
         <GoLink
-          firstUrl="/"
+          firstUrl="/Signup"
           twoUrl="/"
           firstSummary="회원가입"
           twoSummary="로그인"
@@ -37,6 +37,7 @@ const StyledSize = styled("div", {
   width: "100%",
   height: "100%",
   padding: "0rem 9rem",
+  paddingBottom: "2rem"
 });
 
 const logoMove = keyframes({
