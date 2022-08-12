@@ -6,6 +6,7 @@ import { globalStyles } from "../styles/global.style";
 
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles();
+
   return (
     <>
       <Head>
@@ -44,5 +45,4 @@ const StyledMainWrapper = styled("div", {
   width: "100%",
   height: "100%",
   backgroundColor: "$yellow100",
-  padding: "2rem 4rem",
 });
