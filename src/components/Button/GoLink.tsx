@@ -52,5 +52,5 @@ const StyledAnchor = styled("a", {
   fontWeight: "$lg",
   backgroundColor: "$yellow",
   opacity: 0.8,
-  marginBottom: "1rem",
+  marginBottom: "0.85rem",
 });
