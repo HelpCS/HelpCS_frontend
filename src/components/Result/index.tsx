@@ -20,11 +20,13 @@ function Result({ lottieJson, interjection, result, message }: Props) {
       <StyledMessage message="third">{message}</StyledMessage>
 
       {/* 문제 해설 링크로 이동합니다. */}
-      <Link href="/">
-        <a>
-          <StyledButton>해설 보러가기</StyledButton>
-        </a>
-      </Link>
+      <StyledButtonWrapper>
+        <Link href="/">
+          <StyledButton>
+            <button>해설 보러가기</button>
+          </StyledButton>
+        </Link>
+      </StyledButtonWrapper>
     </StyledCorrectWrapper>
   );
 }
@@ -42,9 +44,19 @@ const StyledLottie = styled("div", {
   height: "20rem",
 });
 
-const StyledButton = styled("button", {
-  position: "relative",
-  textAlign: "center",
+const StyledButtonWrapper = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  width: "100%",
+  marginBottom: "1rem"
+});
+
+const StyledButton = styled("a", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   width: "27.2rem",
   borderRadius: "4px",
   height: "4rem",
