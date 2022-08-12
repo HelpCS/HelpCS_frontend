@@ -2,6 +2,13 @@ import { styled } from "../../../stitches.config";
 import LottieWrapper from "../../components/Common/LottieWrapper";
 import Link from "next/link";
 
+import { motion, Variants } from "framer-motion";
+import {
+  defaultEasing,
+  defaultFadeInUpVariants,
+  staggerHalf,
+} from "../../constants/motions";
+
 interface Props {
   lottieJson: object;
   interjection: string;
@@ -15,9 +22,21 @@ function Result({ lottieJson, interjection, result, message }: Props) {
       <StyledLottie>
         <LottieWrapper lottieData={lottieJson} />
       </StyledLottie>
-      <StyledMessage message="first">{interjection}</StyledMessage>
-      <StyledMessage message="second">{result}</StyledMessage>
-      <StyledMessage message="third">{message}</StyledMessage>
+
+      <StyledMotionTextWrapper
+        variants={staggerHalf}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <StyledMessage message="first" variants={textVariants}>
+          {interjection}
+        </StyledMessage>
+        <StyledMessage message="second" variants={textVariants}>
+          {result}
+        </StyledMessage>
+        <StyledMessage message="third">{message}</StyledMessage>
+      </StyledMotionTextWrapper>
 
       {/* 문제 해설 링크로 이동합니다. */}
       <StyledButtonWrapper>
@@ -44,13 +63,20 @@ const StyledLottie = styled("div", {
   height: "20rem",
 });
 
+const StyledMotionTextWrapper = styled(motion.div, {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 const StyledButtonWrapper = styled("div", {
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
   justifyContent: "center",
   width: "100%",
-  marginBottom: "1rem"
+  marginBottom: "1rem",
 });
 
 const StyledButton = styled("a", {
@@ -67,7 +93,7 @@ const StyledButton = styled("a", {
   marginTop: "1rem",
 });
 
-const StyledMessage = styled("span", {
+const StyledMessage = styled(motion.span, {
   fontWeight: "$lg",
   opacity: 0.86,
   marginBottom: "0.45rem",
@@ -87,3 +113,21 @@ const StyledMessage = styled("span", {
     },
   },
 });
+
+const textVariants: Variants = {
+  initial: {
+    opacity: 0,
+    scale: 0.68,
+    transition: { duration: 1.2, ease: defaultEasing },
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.2, ease: defaultEasing },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.7,
+    transition: { duration: 1.2, ease: defaultEasing },
+  },
+};
