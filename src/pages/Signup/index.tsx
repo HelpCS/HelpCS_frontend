@@ -20,8 +20,8 @@ function Signup() {
       <StyledSize>
         <SignupInput />
         <GoLink
-          firstUrl="/Signin"
-          twoUrl="/Signin"
+          firstUrl="/"
+          twoUrl="/"
           firstSummary="이미 계정이 있어요"
           twoSummary="등록"
         />

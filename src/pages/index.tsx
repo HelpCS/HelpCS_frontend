@@ -1,36 +1,90 @@
+import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
+import SignInput from "../components/Input/SignInput";
 import GoLink from "../components/Button/GoLink";
-import QuestionCard from "../components/Card/QuestionCard";
-import Greetings from "../components/Text/Greetings";
 
-function Home() {
+function Signin() {
   return (
-    <StyledPadding>
-      <Greetings />
-      <StyledItemWrapper>
-        <QuestionCard />
+    <>
+      <StyledLogoWrapper>
+        <StyledLogoText>
+          도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발!
+          도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발!
+          도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발! 도와줘 개발!
+          도와줘 개발! 도와줘 개발! 도와줘 개발!
+        </StyledLogoText>
+      </StyledLogoWrapper>
+      <StyledSize>
+        <SignInput />
         <GoLink
-          firstUrl="/"
-          twoUrl="/"
-          firstSummary="잘모르겠어요"
-          twoSummary="다른 문제 풀고 싶어요"
+          firstUrl="/Signup"
+          twoUrl="/Main"
+          firstSummary="회원가입"
+          twoSummary="로그인"
         />
-      </StyledItemWrapper>
-    </StyledPadding>
+      </StyledSize>
+    </>
   );
 }
 
-export default Home;
+export default Signin;
 
-const StyledPadding = styled("div", {
-  padding: "2rem 4rem",
-})
-
-const StyledItemWrapper = styled("div", {
-  width: "100%",
-  height: "100%",
-  position: "relative",
+const StyledSize = styled("div", {
   display: "flex",
   flexDirection: "column",
-  marginTop: "3rem",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
+  padding: "0rem 9rem",
+  paddingBottom: "2rem"
+});
+
+const logoMove = keyframes({
+  "0%": {
+    transform: "translateX(0)",
+  },
+
+  "25%": {
+    transform: "translateX(-25%)",
+  },
+
+  "50%": {
+    transform: "translateX(0)",
+  },
+
+  "75%": {
+    transform: "translateX(-25%)",
+  },
+
+  "100%": {
+    transform: "translateX(0)",
+  },
+});
+
+const StyledLogoWrapper = styled("div", {
+  position: "relative",
+  width: "100%",
+  overflowX: "hidden",
+  display: "flex",
+  flexDirection: "row",
+  paddingBottom: "200px",
+});
+
+const StyledLogoText = styled("h1", {
+  position: "absolute",
+  top: 0,
+  width: "300vw",
+  height: "100%",
+
+  whiteSpace: "nowrap",
+  wordBreak: "break-all",
+  fontWeight: "$lg",
+  fontSize: "5rem",
+  color: "$green",
+
+  display: "flex",
+  alignItems: "center",
+
+  animation: `${logoMove} 150s linear infinite`,
 });
