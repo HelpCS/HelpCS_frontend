@@ -1,19 +1,56 @@
+import { SetStateAction, Dispatch, ChangeEvent } from "react";
 import { styled } from "../../../stitches.config";
 
-function SignupInput() {
+interface Props {
+  nameState: string;
+  setNameState: Dispatch<SetStateAction<string>>;
+  idState: string;
+  setIdState: Dispatch<SetStateAction<string>>;
+  password: string;
+  setPasswordState: Dispatch<SetStateAction<string>>;
+}
+
+function SignupInput({
+  nameState,
+  setNameState,
+  idState,
+  setIdState,
+  password,
+  setPasswordState,
+}: Props) {
+  function onChangeName(e: ChangeEvent<HTMLInputElement>) {
+    setNameState(e.target.value);
+  }
+
+  function onChangeId(e: ChangeEvent<HTMLInputElement>) {
+    setIdState(e.target.value);
+  }
+
+  function onChangePassword(e: ChangeEvent<HTMLInputElement>) {
+    setPasswordState(e.target.value);
+  }
+
   return (
     <StyledSize>
-      <StyledInput placeholder="이름" type="text"></StyledInput>
-      <StyledInput placeholder="아이디" type="text"></StyledInput>
-      <StyledInput placeholder="비밀번호" type="password"></StyledInput>
-      <StyledInput placeholder="비밀번호 확인" type="password"></StyledInput>
+      <StyledInput
+        placeholder="이름"
+        value={nameState}
+        onChange={onChangeName}
+      />
+      <StyledInput placeholder="아이디" value={idState} onChange={onChangeId} />
+      <StyledInput
+        placeholder="비밀번호"
+        type="password"
+        value={password}
+        onChange={onChangePassword}
+      />
     </StyledSize>
   );
 }
 
 export default SignupInput;
 
-const StyledSize = styled("form", {
+const StyledSize = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
