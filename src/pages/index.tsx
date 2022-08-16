@@ -2,8 +2,34 @@ import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
 import SignInput from "../components/Input/SignInput";
 import GoLink from "../components/Button/GoLink";
+import { ACCESS_TOKEN } from "../constants/localStorage";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { post } from "../libs/api/api";
 
 function Signin() {
+  const [id, setId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const router = useRouter();
+
+  function onClickSignup() {
+    router.push("/Signup");
+  }
+
+  async function onClickSignin() {
+    try {
+      const response = await post<Signin>("/auth/signin", {
+        userId: id,
+        password: password,
+      });
+      localStorage.setItem(ACCESS_TOKEN, response.token);
+      router.push("/Main");
+    } catch (error) {
+      alert("로그인에 실패하였습니다.");
+    }
+  }
+
   return (
     <>
       <StyledLogoWrapper>
@@ -15,12 +41,17 @@ function Signin() {
         </StyledLogoText>
       </StyledLogoWrapper>
       <StyledSize>
-        <SignInput />
+        <SignInput
+          idState={id}
+          password={password}
+          setIdState={setId}
+          setPasswordState={setPassword}
+        />
         <GoLink
-          firstUrl="/Signup"
-          twoUrl="/Main"
+          onClickFirst={onClickSignup}
+          onClickTwo={onClickSignin}
           firstSummary="회원가입"
-          twoSummary="로그인"
+          secondSummary="로그인"
         />
       </StyledSize>
     </>
@@ -37,7 +68,7 @@ const StyledSize = styled("div", {
   width: "100%",
   height: "100%",
   padding: "0rem 9rem",
-  paddingBottom: "2rem"
+  paddingBottom: "2rem",
 });
 
 const logoMove = keyframes({
