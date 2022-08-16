@@ -1,17 +1,38 @@
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { styled } from "../../../stitches.config";
 
-function SignInput() {
+interface Props {
+  idState: string;
+  setIdState: Dispatch<SetStateAction<string>>;
+  password: string;
+  setPasswordState: Dispatch<SetStateAction<string>>;
+}
+
+function SignInput({ idState, setIdState, password, setPasswordState }: Props) {
+  function onChangeId(e: ChangeEvent<HTMLInputElement>) {
+    setIdState(e.target.value);
+  }
+
+  function onChangePassword(e: ChangeEvent<HTMLInputElement>) {
+    setPasswordState(e.target.value);
+  }
+
   return (
     <StyledSize>
-      <StyledInput placeholder="아이디" type="text"></StyledInput>
-      <StyledInput placeholder="비밀번호" type="password"></StyledInput>
+      <StyledInput placeholder="아이디" value={idState} onChange={onChangeId} />
+      <StyledInput
+        placeholder="비밀번호"
+        type="password"
+        value={password}
+        onChange={onChangePassword}
+      />
     </StyledSize>
   );
 }
 
 export default SignInput;
 
-const StyledSize = styled("form", {
+const StyledSize = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
