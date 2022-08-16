@@ -1,27 +1,19 @@
-import Link from "next/link";
+import { MouseEvent } from "react";
 import { styled } from "../../../stitches.config";
 
 interface Props {
-  firstUrl: string;
-  twoUrl: string;
+  onClickFirst: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClickTwo: (e: MouseEvent<HTMLButtonElement>) => void;
   firstSummary: string;
-  twoSummary: string;
+  secondSummary: string;
 }
 
-function GoLink({ firstUrl, twoUrl, firstSummary, twoSummary }: Props) {
+function GoLink({ onClickFirst, onClickTwo, firstSummary, secondSummary }: Props) {
   return (
     <StyledSize>
       <StyledItemWrapper>
-        <Link href={firstUrl}>
-          <StyledAnchor>
-            <button>{firstSummary}</button>
-          </StyledAnchor>
-        </Link>
-        <Link href={twoUrl}>
-          <StyledAnchor>
-            <button>{twoSummary}</button>
-          </StyledAnchor>
-        </Link>
+        <StyledButton onClick={onClickFirst}>{firstSummary}</StyledButton>
+        <StyledButton onClick={onClickTwo}>{secondSummary}</StyledButton>
       </StyledItemWrapper>
     </StyledSize>
   );
@@ -42,7 +34,7 @@ const StyledItemWrapper = styled("div", {
   width: "100%",
 });
 
-const StyledAnchor = styled("a", {
+const StyledButton = styled("button", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
