@@ -1,0 +1,3 @@
+interface Signin {
+  token: string;
+}

@@ -1,0 +1,3 @@
+interface Signup {
+  token: string;
+}
